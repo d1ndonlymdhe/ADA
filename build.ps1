@@ -3,7 +3,7 @@ $sourceFile = $args[0]
 #remove the extension and folders from the source file
 $outputFile = $sourceFile -replace '\.cpp', '.exe' -replace '^.+\\', ''
 # Compile the C++ file
-$compileCommand = "g++ -o ./output/$outputFile -I ./include $sourceFile" 
+$compileCommand = "g++ -o ./output/$outputFile -I ./include -O3 $sourceFile" 
 Invoke-Expression $compileCommand
 
 # Check if the compilation was successful
