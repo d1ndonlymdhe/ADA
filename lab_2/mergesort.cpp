@@ -64,8 +64,8 @@ vector<int> mergesort(vector<int> arr)
 int main()
 {
     vector<int> sizes;
-    int start_size = 1000000;
-    int increment = 500000;
+    int start_size = 10000;
+    int increment = 5000;
     sizes.push_back(start_size);
     for (size_t i = 0; i < 4; i++)
     {
@@ -83,7 +83,6 @@ int main()
 
         long long time = getTime([&]()
                                  {
-                                    //  cout << "size of arr: " << (sizeof arr) / (sizeof(int)) << "\n";
                                      mergesort(arr); });
         cout << "Time taken to mergesort " << size << " items: " << time << " nanoseconds\n";
     }
