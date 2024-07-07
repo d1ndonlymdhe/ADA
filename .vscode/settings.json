@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "ratio": "cpp",
+        "functional": "cpp",
+        "chrono": "cpp",
+        "vector": "cpp",
+        "ostream": "cpp",
+        "utility": "cpp",
+        "iostream": "cpp",
+        "algorithm": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp"
+    }
+}
