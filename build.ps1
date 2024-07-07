@@ -9,7 +9,7 @@ Invoke-Expression $compileCommand
 # Check if the compilation was successful
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Compilation successful. Running the executable..."
-    
+    Write-Host $outputFile
     # Run the executable
     Invoke-Expression ./output/$outputFile
 } else {
