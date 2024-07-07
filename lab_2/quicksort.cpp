@@ -3,7 +3,6 @@
 #include <gettime.h>
 using namespace std;
 
-// Helper function to swap two elements
 void swap(int *a, int *b)
 {
     int temp = *a;
@@ -11,11 +10,10 @@ void swap(int *a, int *b)
     *b = temp;
 }
 
-// Partition function
 int partition(vector<int> &arr, int start, int end)
 {
-    int pivot = arr[end]; // Choose the last element as pivot
-    int i = start - 1;    // Index of the smaller element
+    int pivot = arr[end];
+    int i = start - 1;    
 
     for (int j = start; j <= end - 1; j++)
     {
@@ -29,14 +27,11 @@ int partition(vector<int> &arr, int start, int end)
     return (i + 1);
 }
 
-// Quicksort function
 void quicksort(vector<int> &arr, int start, int end)
 {
     if (start < end)
     {
-        int pi = partition(arr, start, end); // Partitioning index
-
-        // Recursively sort elements before and after partition
+        int pi = partition(arr, start, end);
         quicksort(arr, start, pi - 1);
         quicksort(arr, pi + 1, end);
     }
@@ -64,7 +59,6 @@ int main()
 
         long long time = getTime([&]()
                                  {
-                                    //  cout << "size of arr: " << (sizeof arr) / (sizeof(int)) << "\n";
                                      quicksort(arr, 0, arr.size()); });
         cout << "Time taken to quicksort " << size << " items: " << time << " nanoseconds\n";
     }
