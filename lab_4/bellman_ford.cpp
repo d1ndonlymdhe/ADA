@@ -111,5 +111,7 @@ int main()
     graph.edges[7].dest = 3;
     graph.edges[7].weight = -3;
 
-    bellman_ford(graph, 0);
+    long long time = getTime([&]()
+                             { bellman_ford(graph, 0); });
+    cout << "time = " << time << " ns";
 }

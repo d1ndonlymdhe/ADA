@@ -2,6 +2,8 @@
 #include <queue>
 #include <stack>
 #include <vector>
+#include <string>
+#include "gettime.h"
 #define INFINITY -1
 
 using namespace std;
@@ -55,7 +57,7 @@ public:
         {
             int v = q.front();
             q.pop();
-            cout << names[v] << " " << endl;
+            // cout << names[v] << " " << endl;
             for (int i : getAdjacent(v))
             {
                 if (!vectorHas(visited, i))
@@ -80,7 +82,7 @@ public:
                 nodes.pop();
                 if (!vectorHas(visited, top))
                 {
-                    cout << names[top] << endl;
+                    // cout << names[top] << endl;
                     visited.push_back(top);
                 }
 
@@ -96,12 +98,55 @@ public:
     }
 };
 
+vector<string> names(int n)
+{
+    vector<string> res;
+    for (int i = 0; i < n; i++)
+    {
+        res.push_back(to_string(i));
+    }
+    return res;
+}
+
 int main()
 {
-    Graph g(6, {"A", "B", "C", "D", "E", "F"});
-    g.matrix = {{0, 1, 1, 0, 0, 0}, {1, 0, 1, 1, 1, 0}, {1, 0, 1, 1, 1, 0}, {0, 1, 1, 0, 1, 1}, {0, 1, 1, 1, 0, 1}, {0, 0, 0, 1, 1, 0}};
-    cout << "DFS" << endl;
-    g.dfs();
-    cout << "BFS" << endl;
-    g.bfs();
+    vector<int> sizes;
+    int start_size = 100;
+    int increment = 100;
+    sizes.push_back(start_size);
+    srand(time(NULL));
+    for (size_t i = 0; i < 4; i++)
+    {
+        sizes.push_back(sizes.back() + increment);
+    }
+    for (int size : sizes)
+    {
+        Graph g(size, names(size));
+        vector<vector<int>> matrix;
+        for (int i = 0; i < size; i++)
+        {
+            vector<int> row;
+            for (int j = 0; j < size; j++)
+            {
+                if (rand() % 2 == 0)
+                {
+                    row.push_back(1);
+                }
+                else
+                {
+                    row.push_back(0);
+                }
+            }
+            matrix.push_back(row);
+        }
+        g.matrix = matrix;
+
+        cout << "size = " << size << endl;
+        long long time = getTime([&]()
+                                 { g.dfs(); });
+        cout << "DFS time = " << time << endl;
+        time = getTime([&]()
+                       { g.bfs(); });
+        cout << "BFS time = " << time << endl;
+    }
 }
