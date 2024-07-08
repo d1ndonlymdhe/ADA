@@ -48,10 +48,10 @@ void bellman_ford(Graph g, int src)
         {
             int u = g.edges[j].src;
             int v = g.edges[j].dest;
-            int wieght = g.edges[j].weight;
-            if (dist[u] != INT_MAX && dist[u] + wieght < dist[v])
+            int weight = g.edges[j].weight;
+            if (dist[u] != INT_MAX && dist[u] + weight < dist[v])
             {
-                dist[v] = dist[u] + wieght;
+                dist[v] = dist[u] + weight;
             }
         }
     }
